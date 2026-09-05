@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="劉冠彤的 ESG、供應鏈合規與氣候策略個人網站。">
+  <title>劉冠彤｜ESG 與永續發展</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&family=Noto+Sans+TC:wght@400;500;700;900&display=swap');
+
+    :root {
+      --ink: #172a2e;
+      --muted: #657174;
+      --paper: #f4f1ea;
+      --white: #fffdf8;
+      --line: #d9ddd5;
+      --leaf: #a7c93c;
+      --leaf-deep: #55701f;
+      --coral: #ed765e;
+      --navy: #23414a;
+      --shadow: 0 18px 55px rgba(23, 42, 46, .08);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--paper);
+      font-family: 'Manrope', 'Noto Sans TC', sans-serif;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; }
+    .shell { width: min(1180px, calc(100% - 64px)); margin: 0 auto; }
+    .mono { color: var(--leaf-deep); font: 500 .72rem/1.2 'DM Mono', 'Noto Sans TC', monospace; letter-spacing: .12em; text-transform: uppercase; }
+
+    main, footer { transition: opacity .2s ease; }
+    body.switching main, body.switching footer { opacity: .35; }
+
+    header {
+      position: fixed;
+      z-index: 10;
+      top: 0;
+      width: 100%;
+      border-bottom: 1px solid rgba(217, 221, 213, .85);
+      background: rgba(244, 241, 234, .88);
+      backdrop-filter: blur(15px);
+    }
+    .nav { height: 78px; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+    .brand { display: flex; align-items: center; gap: 12px; font-size: .8rem; font-weight: 800; letter-spacing: .06em; }
+    .brand-mark { width: 35px; height: 35px; display: grid; place-items: center; color: var(--ink); background: var(--leaf); border-radius: 50% 50% 50% 8px; font-size: 1rem; flex: none; }
+    nav { display: flex; align-items: center; gap: 29px; font-size: .78rem; font-weight: 700; }
+    nav a { position: relative; color: var(--muted); transition: color .2s ease; white-space: nowrap; }
+    nav a:hover, nav a.active { color: var(--ink); }
+    nav a.active::after { content: ''; position: absolute; left: 0; right: 0; bottom: -9px; height: 2px; background: var(--coral); }
+    .nav-contact { padding: 9px 16px; color: var(--white); background: var(--navy); border-radius: 2px; }
+    .nav-contact:hover { color: var(--white); background: var(--coral); }
+    .nav-tools { display: flex; align-items: center; gap: 12px; }
+    .lang-toggle {
+      display: inline-flex; align-items: center; gap: 7px;
+      padding: 8px 13px;
+      border: 1px solid var(--line); border-radius: 2px;
+      color: var(--ink); background: transparent;
+      font: 500 .7rem 'DM Mono', 'Noto Sans TC', monospace;
+      letter-spacing: .1em; white-space: nowrap; cursor: pointer;
+      transition: border-color .2s ease, color .2s ease;
+    }
+    .lang-toggle:hover { color: var(--coral); border-color: var(--coral); }
+    .lang-toggle .globe { color: var(--leaf-deep); font-size: .8rem; line-height: 1; }
+    .lang-toggle:hover .globe { color: var(--coral); }
+    .menu { display: none; border: 0; color: var(--ink); background: transparent; font-size: 1.5rem; cursor: pointer; }
+
+    .hero { min-height: 700px; padding: 165px 0 95px; overflow: hidden; position: relative; }
+    .hero::before { content: ''; position: absolute; z-index: -1; width: 600px; height: 600px; top: -160px; right: -165px; border: 1px solid rgba(167, 201, 60, .45); border-radius: 50%; box-shadow: 0 0 0 32px rgba(167, 201, 60, .07), 0 0 0 76px rgba(167, 201, 60, .04); }
+    .hero-grid { display: grid; grid-template-columns: minmax(0, 1.18fr) minmax(290px, .82fr); gap: 90px; align-items: end; }
+    .eyebrow { display: flex; align-items: center; gap: 10px; margin-bottom: 25px; }
+    .eyebrow::before { content: ''; width: 34px; height: 2px; background: var(--coral); flex: none; }
+    h1 { max-width: 800px; margin: 0; font-size: clamp(3.5rem, 8vw, 7.2rem); line-height: .98; letter-spacing: -.075em; font-weight: 800; }
+    h1 span { color: var(--coral); }
+    .hero-copy { max-width: 570px; margin: 31px 0 34px; color: var(--muted); font-size: 1.04rem; }
+    .hero-links { display: flex; align-items: center; gap: 21px; flex-wrap: wrap; }
+    .button { display: inline-flex; align-items: center; gap: 11px; padding: 13px 19px; border: 1px solid var(--navy); color: var(--white); background: var(--navy); font-size: .8rem; font-weight: 700; transition: transform .2s ease, background .2s ease; }
+    .button:hover { transform: translateY(-3px); background: var(--coral); border-color: var(--coral); }
+    .text-link { border-bottom: 1px solid var(--ink); font-size: .8rem; font-weight: 700; }
+    .hero-side { position: relative; padding: 28px 0 0 35px; border-left: 1px solid var(--line); }
+    .hero-side::before { content: '01'; position: absolute; top: 0; left: -10px; padding: 2px 5px; color: var(--coral); background: var(--paper); font: 500 .72rem 'DM Mono', monospace; }
+    .hero-side h2 { margin: 0 0 18px; font-size: 1.42rem; line-height: 1.35; letter-spacing: -.04em; }
+    .hero-side p { margin: 0; color: var(--muted); font-size: .9rem; }
+    .location { display: flex; align-items: center; gap: 8px; margin-top: 31px; color: var(--ink); font: 500 .72rem 'DM Mono', 'Noto Sans TC', monospace; letter-spacing: .08em; }
+    .location i { width: 8px; height: 8px; background: var(--leaf); border-radius: 50%; flex: none; }
+
+    section { padding: 112px 0; border-top: 1px solid var(--line); }
+    .section-head { display: grid; grid-template-columns: 1fr 2fr; gap: 70px; margin-bottom: 58px; }
+    .section-number { margin-top: 9px; }
+    h2 { margin: 0; font-size: clamp(2.1rem, 4vw, 4rem); line-height: 1.07; letter-spacing: -.065em; }
+    .intro { max-width: 600px; margin: 0; color: var(--muted); font-size: 1rem; }
+    .focus-grid { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--ink); }
+    .focus-item { padding: 28px 28px 29px 0; border-right: 1px solid var(--line); }
+    .focus-item + .focus-item { padding-left: 28px; }
+    .focus-item:last-child { border-right: 0; }
+    .focus-icon { color: var(--coral); font-size: 1.6rem; }
+    .focus-item h3 { margin: 13px 0 7px; font-size: 1.04rem; }
+    .focus-item p { margin: 0; color: var(--muted); font-size: .84rem; }
+
+    .skills { background: var(--navy); color: var(--white); }
+    .skills .section-number { color: var(--leaf); }
+    .skills .intro { color: #c6d2cf; }
+    .skill-layout { display: grid; grid-template-columns: 1.15fr .85fr; gap: 80px; align-items: start; }
+    .skill-list { display: grid; grid-template-columns: repeat(2, 1fr); border-top: 1px solid rgba(255,255,255,.25); }
+    .skill { padding: 20px 15px 20px 0; border-bottom: 1px solid rgba(255,255,255,.18); font-size: .93rem; }
+    .skill:nth-child(even) { padding-left: 20px; border-left: 1px solid rgba(255,255,255,.18); }
+    .skill small { display: block; margin-bottom: 5px; color: var(--leaf); font: 500 .67rem 'DM Mono', monospace; }
+    .language-box { padding: 28px; background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.16); }
+    .language-box h3 { margin: 0 0 18px; font-size: 1rem; }
+    .language { display: flex; align-items: baseline; justify-content: space-between; gap: 14px; padding: 9px 0; border-bottom: 1px solid rgba(255,255,255,.14); color: #d8e1de; font-size: .82rem; }
+    .language:last-child { border-bottom: 0; }
+    .language em { color: var(--leaf); font-style: normal; font-size: .74rem; text-align: right; }
+    .language em b { display: block; margin-top: 2px; color: #b9c6c2; font: 500 .66rem 'DM Mono', 'Noto Sans TC', monospace; letter-spacing: .04em; }
+
+    .timeline { position: relative; padding-left: 35px; }
+    .timeline::before { content: ''; position: absolute; top: 4px; bottom: 0; left: 5px; width: 1px; background: var(--line); }
+    .experience { position: relative; display: grid; grid-template-columns: 185px 1fr; gap: 45px; padding-bottom: 58px; }
+    .experience:last-child { padding-bottom: 0; }
+    .experience::before { content: ''; position: absolute; left: -34px; top: 5px; width: 9px; height: 9px; border: 2px solid var(--coral); background: var(--paper); border-radius: 50%; }
+    .date { color: var(--muted); font: 500 .72rem/1.5 'DM Mono', 'Noto Sans TC', monospace; }
+    .company { margin: 0 0 5px; font-size: 1.35rem; line-height: 1.25; letter-spacing: -.04em; }
+    .role { margin: 0 0 17px; color: var(--coral); font-weight: 700; font-size: .84rem; }
+    .experience p { max-width: 680px; margin: 0 0 15px; color: var(--muted); font-size: .86rem; }
+    .tags { display: flex; flex-wrap: wrap; gap: 7px; }
+    .tag { padding: 4px 9px; border: 1px solid var(--line); color: var(--muted); font: 500 .64rem 'DM Mono', 'Noto Sans TC', monospace; }
+
+    .education { background: #e9e7de; }
+    .edu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .edu-item { padding: 26px 25px; background: var(--white); border-top: 3px solid var(--leaf); }
+    .edu-item h3 { margin: 0 0 7px; font-size: 1rem; line-height: 1.4; }
+    .edu-item p { margin: 0; color: var(--muted); font-size: .8rem; }
+    .certs { margin-top: 52px; }
+    .cert-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 14px; }
+    .cert { min-height: 128px; padding: 20px; background: var(--navy); color: var(--white); display: flex; flex-direction: column; justify-content: space-between; gap: 12px; }
+    .cert strong { font-size: .88rem; line-height: 1.4; }
+    .cert span { color: var(--leaf); font: 500 .64rem 'DM Mono', 'Noto Sans TC', monospace; }
+
+    .contact-section { position: relative; padding-bottom: 125px; overflow: hidden; }
+    .contact-bg { position: absolute; z-index: -1; right: -20px; bottom: -55px; color: rgba(167, 201, 60, .25); font-size: 13rem; line-height: .74; font-weight: 900; letter-spacing: -.1em; text-align: right; pointer-events: none; user-select: none; }
+    .contact-content { display: grid; grid-template-columns: 1.2fr .8fr; gap: 100px; align-items: end; }
+    .contact-content h2 { max-width: 690px; }
+    .contact-content h2 span { color: var(--coral); }
+    .contact-info { border-left: 1px solid var(--line); padding-left: 26px; }
+    .contact-info p { margin: 0 0 10px; color: var(--muted); font-size: .8rem; }
+    .contact-info a { display: block; width: fit-content; margin-bottom: 9px; border-bottom: 1px solid var(--line); font-size: .84rem; font-weight: 700; }
+    footer { padding: 22px 0; color: #c7d2cf; background: var(--ink); font-size: .7rem; }
+    .footer-inner { display: flex; justify-content: space-between; gap: 20px; }
+
+    /* 中文版的字級與字距微調 */
+    html[lang="zh-Hant"] h1 { font-size: clamp(2.9rem, 6.4vw, 5.6rem); line-height: 1.12; letter-spacing: -.02em; }
+    html[lang="zh-Hant"] h2 { font-size: clamp(1.85rem, 3.4vw, 3.05rem); line-height: 1.3; letter-spacing: -.01em; }
+    html[lang="zh-Hant"] .hero-side h2 { font-size: 1.36rem; line-height: 1.55; letter-spacing: 0; }
+    html[lang="zh-Hant"] .company { letter-spacing: -.01em; }
+    html[lang="zh-Hant"] .mono { letter-spacing: .1em; }
+    html[lang="zh-Hant"] .contact-bg { font-size: 9.5rem; line-height: .98; letter-spacing: .02em; bottom: -28px; }
+
+    .reveal { opacity: 0; transform: translateY(18px); transition: opacity .65s ease, transform .65s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+    @media (max-width: 800px) {
+      .shell { width: min(100% - 38px, 620px); }
+      .nav { height: 68px; }
+      nav { display: none; position: absolute; top: 68px; left: 0; right: 0; padding: 18px 19px 24px; flex-direction: column; align-items: flex-start; gap: 15px; background: var(--paper); border-bottom: 1px solid var(--line); }
+      nav.open { display: flex; }
+      nav a.active::after { display: none; }
+      .menu { display: block; }
+      .lang-toggle { padding: 7px 10px; }
+      .hero { min-height: auto; padding: 130px 0 77px; }
+      .hero-grid, .skill-layout, .contact-content { grid-template-columns: 1fr; gap: 48px; }
+      .hero-side { padding-top: 23px; padding-left: 20px; }
+      .section-head { grid-template-columns: 1fr; gap: 17px; margin-bottom: 38px; }
+      section { padding: 76px 0; }
+      .focus-grid, .edu-grid, .cert-grid { grid-template-columns: 1fr; }
+      .focus-item, .focus-item + .focus-item { padding: 23px 0; border-right: 0; border-bottom: 1px solid var(--line); }
+      .focus-item:last-child { border-bottom: 0; }
+      .experience { grid-template-columns: 1fr; gap: 8px; padding-bottom: 44px; }
+      .timeline { padding-left: 29px; }
+      .experience::before { left: -28px; }
+      .skill-layout { gap: 36px; }
+      .contact-content { gap: 35px; }
+      .contact-bg, html[lang="zh-Hant"] .contact-bg { font-size: 5.5rem; right: -8px; bottom: -5px; }
+      .footer-inner { flex-direction: column; gap: 5px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="shell nav">
+      <a class="brand" href="#top" data-i18n-aria="a11y.home"><span class="brand-mark">KL</span><span data-i18n="brand.name"></span></a>
+      <nav>
+        <a href="#about" data-i18n="nav.about"></a>
+        <a href="#skills" data-i18n="nav.skills"></a>
+        <a href="#experience" data-i18n="nav.experience"></a>
+        <a href="#education" data-i18n="nav.education"></a>
+        <a class="nav-contact" href="#contact" data-i18n="nav.contact"></a>
+      </nav>
+      <div class="nav-tools">
+        <button class="lang-toggle" id="langToggle" type="button" data-i18n-aria="a11y.lang">
+          <span class="globe" aria-hidden="true">&#9673;</span><span id="langLabel"></span>
+        </button>
+        <button class="menu" data-i18n-aria="a11y.menu" aria-expanded="false">&#9776;</button>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="shell hero-grid">
+        <div class="reveal">
+          <div class="eyebrow mono" data-i18n="hero.eyebrow"></div>
+          <h1 data-i18n="hero.title"></h1>
+          <p class="hero-copy" data-i18n="hero.copy"></p>
+          <div class="hero-links">
+            <a class="button" href="#experience"><span data-i18n="hero.cta"></span><span>&#8599;</span></a>
+            <a class="text-link" href="mailto:liukuantung@gmail.com">liukuantung@gmail.com</a>
+          </div>
+        </div>
+        <aside class="hero-side reveal">
+          <h2 data-i18n="hero.sideTitle"></h2>
+          <p data-i18n="hero.sideCopy"></p>
+          <div class="location"><i></i><span data-i18n="hero.location"></span></div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="shell">
+        <div class="section-head reveal">
+          <div class="section-number mono" data-i18n="about.number"></div>
+          <div>
+            <h2 data-i18n="about.title"></h2>
+            <p class="intro" data-i18n="about.intro"></p>
+          </div>
+        </div>
+        <div class="focus-grid reveal">
+          <article class="focus-item"><div class="focus-icon">&#8599;</div><h3 data-i18n="about.focus1Title"></h3><p data-i18n="about.focus1Copy"></p></article>
+          <article class="focus-item"><div class="focus-icon">&#9676;</div><h3 data-i18n="about.focus2Title"></h3><p data-i18n="about.focus2Copy"></p></article>
+          <article class="focus-item"><div class="focus-icon">&#9089;</div><h3 data-i18n="about.focus3Title"></h3><p data-i18n="about.focus3Copy"></p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills" class="skills">
+      <div class="shell">
+        <div class="section-head reveal">
+          <div class="section-number mono" data-i18n="skills.number"></div>
+          <div>
+            <h2 data-i18n="skills.title"></h2>
+            <p class="intro" data-i18n="skills.intro"></p>
+          </div>
+        </div>
+        <div class="skill-layout reveal">
+          <div class="skill-list">
+            <div class="skill"><small>01</small><span data-i18n="skills.item1"></span></div>
+            <div class="skill"><small>02</small><span data-i18n="skills.item2"></span></div>
+            <div class="skill"><small>03</small><span data-i18n="skills.item3"></span></div>
+            <div class="skill"><small>04</small><span data-i18n="skills.item4"></span></div>
+            <div class="skill"><small>05</small><span data-i18n="skills.item5"></span></div>
+            <div class="skill"><small>06</small><span data-i18n="skills.item6"></span></div>
+            <div class="skill"><small>07</small><span data-i18n="skills.item7"></span></div>
+            <div class="skill"><small>08</small><span data-i18n="skills.item8"></span></div>
+          </div>
+          <div class="language-box">
+            <h3 data-i18n="skills.langTitle"></h3>
+            <div class="language"><span data-i18n="skills.langChinese"></span><em data-i18n="skills.levelNative"></em></div>
+            <div class="language"><span data-i18n="skills.langEnglish"></span><em><span data-i18n="skills.levelProfessional"></span><b data-i18n="skills.scoreEnglish"></b></em></div>
+            <div class="language"><span data-i18n="skills.langGerman"></span><em><span data-i18n="skills.levelLimited"></span><b data-i18n="skills.scoreGerman"></b></em></div>
+            <div class="language"><span data-i18n="skills.langVietnamese"></span><em data-i18n="skills.levelElementary"></em></div>
+            <div class="language"><span data-i18n="skills.langTaiwanese"></span><em data-i18n="skills.levelLimited"></em></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience">
+      <div class="shell">
+        <div class="section-head reveal">
+          <div class="section-number mono" data-i18n="experience.number"></div>
+          <div>
+            <h2 data-i18n="experience.title"></h2>
+            <p class="intro" data-i18n="experience.intro"></p>
+          </div>
+        </div>
+        <div class="timeline">
+          <article class="experience reveal">
+            <time class="date" data-i18n="experience.job1Date"></time>
+            <div>
+              <h3 class="company" data-i18n="experience.job1Company"></h3>
+              <p class="role" data-i18n="experience.job1Role"></p>
+              <p data-i18n="experience.job1Copy"></p>
+              <div class="tags"><span class="tag" data-i18n="experience.job1Tag1"></span><span class="tag">CDP</span><span class="tag">PPWR</span><span class="tag">HRDD</span></div>
+            </div>
+          </article>
+          <article class="experience reveal">
+            <time class="date" data-i18n="experience.job2Date"></time>
+            <div>
+              <h3 class="company">FUJIFILM Business Innovation Vietnam</h3>
+              <p class="role" data-i18n="experience.job2Role"></p>
+              <p data-i18n="experience.job2Copy"></p>
+              <div class="tags"><span class="tag">B2B</span><span class="tag" data-i18n="experience.job2Tag2"></span><span class="tag" data-i18n="experience.job2Tag3"></span></div>
+            </div>
+          </article>
+          <article class="experience reveal">
+            <time class="date" data-i18n="experience.job3Date"></time>
+            <div>
+              <h3 class="company" data-i18n="experience.job3Company"></h3>
+              <p class="role" data-i18n="experience.job3Role"></p>
+              <p data-i18n="experience.job3Copy"></p>
+              <div class="tags"><span class="tag" data-i18n="experience.job3Tag1"></span><span class="tag" data-i18n="experience.job3Tag2"></span><span class="tag" data-i18n="experience.job3Tag3"></span></div>
+            </div>
+          </article>
+          <article class="experience reveal">
+            <time class="date" data-i18n="experience.job4Date"></time>
+            <div>
+              <h3 class="company" data-i18n="experience.job4Company"></h3>
+              <p class="role" data-i18n="experience.job4Role"></p>
+              <p data-i18n="experience.job4Copy"></p>
+              <div class="tags"><span class="tag" data-i18n="experience.job4Tag1"></span><span class="tag" data-i18n="experience.job4Tag2"></span><span class="tag" data-i18n="experience.job4Tag3"></span></div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="education" class="education">
+      <div class="shell">
+        <div class="section-head reveal">
+          <div class="section-number mono" data-i18n="education.number"></div>
+          <div>
+            <h2 data-i18n="education.title"></h2>
+            <p class="intro" data-i18n="education.intro"></p>
+          </div>
+        </div>
+        <div class="edu-grid reveal">
+          <article class="edu-item"><h3 data-i18n="education.school1"></h3><p data-i18n="education.school1Copy"></p></article>
+          <article class="edu-item"><h3>iSpan International Inc.</h3><p data-i18n="education.school2Copy"></p></article>
+          <article class="edu-item"><h3 data-i18n="education.school3"></h3><p data-i18n="education.school3Copy"></p></article>
+          <article class="edu-item"><h3 data-i18n="education.school4"></h3><p data-i18n="education.school4Copy"></p></article>
+        </div>
+        <div class="certs reveal">
+          <div class="mono" data-i18n="education.certsLabel"></div>
+          <div class="cert-grid">
+            <div class="cert"><strong data-i18n="education.cert1"></strong><span>iPAS &middot; 115-02-Y01</span></div>
+            <div class="cert"><strong data-i18n="education.cert2"></strong><span data-i18n="education.cert2Note"></span></div>
+            <div class="cert"><strong data-i18n="education.cert3"></strong><span data-i18n="education.cert3Note"></span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="contact-section">
+      <div class="contact-bg" aria-hidden="true" data-i18n="contact.bg"></div>
+      <div class="shell contact-content reveal">
+        <div>
+          <div class="mono" data-i18n="contact.number"></div>
+          <h2 data-i18n="contact.title"></h2>
+        </div>
+        <div class="contact-info">
+          <p data-i18n="contact.copy"></p>
+          <a href="mailto:liukuantung@gmail.com">liukuantung@gmail.com &#8599;</a>
+          <a href="https://www.linkedin.com/in/liukuantung" target="_blank" rel="noreferrer">LinkedIn &#8599;</a>
+          <a href="https://ktungl.github.io/kuantung/" target="_blank" rel="noreferrer"><span data-i18n="contact.site"></span> &#8599;</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="shell footer-inner">
+      <span>&copy; <span id="year"></span> <span data-i18n="footer.name"></span></span>
+      <span data-i18n="footer.tagline"></span>
+    </div>
+  </footer>
+
+  <script>
+    /* ---------- 語言字典 / language dictionary ----------
+       只有單一名稱的公司（TCI Group、FUJIFILM Business Innovation Vietnam、
+       iSpan International Inc.）兩種語言都維持原名；
+       有官方雙語名稱的（賜昌集團 / Freetrend Group、
+       中華民國國際經濟合作協會 / CIECA）則各用該語言的正式名稱。 */
+    const I18N = {
+      zh: {
+        'meta.title': '劉冠彤｜ESG 與永續發展',
+        'meta.description': '劉冠彤的 ESG、供應鏈合規與氣候策略個人網站。',
+        'a11y.home': '回到首頁',
+        'a11y.menu': '開啟選單',
+        'a11y.lang': '切換語言，Switch to English',
+        'lang.label': 'EN',
+        'brand.name': '劉冠彤',
+        'nav.about': '關於我',
+        'nav.skills': '專業能力',
+        'nav.experience': '工作經歷',
+        'nav.education': '學歷證照',
+        'nav.contact': '聯絡我',
+
+        'hero.eyebrow': 'ESG／供應鏈／氣候',
+        'hero.title': '把複雜，<br><span>化為</span><br>行動。',
+        'hero.copy': '我是劉冠彤，一名專注於 ESG、供應鏈永續與國際合規的專業工作者。跨越台灣與越南的工作經驗，讓我習慣在政策、商業與現場之間建立可執行的連結。',
+        'hero.cta': '看看我的經歷',
+        'hero.sideTitle': '理解政策。<br>貼近商業。<br>相信數據。',
+        'hero.sideCopy': '把全球永續趨勢，轉化為企業、供應商與跨國團隊可以採取的下一步。',
+        'hero.location': '台北，台灣／歡迎交流',
+
+        'about.number': '02 ／ 簡介',
+        'about.title': '一個能在不同語言之間工作的永續夥伴。',
+        'about.intro': '我的背景橫跨國際事務、跨境商務、海外營運、EHS 以及全端開發。這些看似分散的經驗，最後都指向同一件事：理解複雜問題，找到能被團隊真正採用的解法。',
+        'about.focus1Title': '轉譯法規',
+        'about.focus1Copy': '追蹤 PPWR、REACH、FCM 等國際規範，整理成內部、供應商與客戶都能使用的實務要求。',
+        'about.focus2Title': '串起供應鏈',
+        'about.focus2Copy': '串聯採購、品保、法規、研發與供應商，讓 ESG 不只停留在報告，而是進入日常決策。',
+        'about.focus3Title': '讓數據可用',
+        'about.focus3Copy': '運用 GHG Protocol、資料分析與數位工具，建立可追蹤、可溝通、可持續改善的流程。',
+
+        'skills.number': '03 ／ 專業能力',
+        'skills.title': '我能帶來<br>什麼。',
+        'skills.intro': '從氣候資料到供應鏈現場，從合規研究到跨文化溝通，我擅長在不同專業之間翻譯與協作。',
+        'skills.item1': '溫室氣體盤查與範疇三',
+        'skills.item2': '供應鏈合規',
+        'skills.item3': 'ESG 與永續策略',
+        'skills.item4': '人權盡職調查',
+        'skills.item5': '法規研究',
+        'skills.item6': '供應商溝通與輔導',
+        'skills.item7': '資料分析與 SQL',
+        'skills.item8': '跨國專案協作',
+        'skills.langTitle': '語言能力',
+        'skills.langChinese': '中文',
+        'skills.langEnglish': '英文',
+        'skills.langGerman': '德文',
+        'skills.langVietnamese': '越南文',
+        'skills.langTaiwanese': '台語',
+        'skills.scoreEnglish': '多益 905',
+        'skills.scoreGerman': 'CEFR B1',
+        'skills.levelNative': '母語',
+        'skills.levelProfessional': '專業工作能力',
+        'skills.levelLimited': '基礎工作能力',
+        'skills.levelElementary': '入門',
+
+        'experience.number': '04 ／ 歷程',
+        'experience.title': '跨越國界的<br>工作經驗。',
+        'experience.intro': '在企業永續、製造現場、B2B 商務與國際合作之間累積經驗，讓我能從不同利害關係人的角度看待問題。',
+        'experience.job1Date': '2026年4月 — 至今<br>台北，台灣',
+        'experience.job1Company': '大江生醫',
+        'experience.job1Role': 'ESG 與永續專員／供應鏈合規／氣候與 ESG 策略',
+        'experience.job1Copy': '協調供應商 ESG 計畫與範疇三資料收集，推動溫室氣體盤查、CDP 揭露、人權盡職調查評估框架，以及 PPWR、REACH、FCM 等歐盟法規的合規專案。',
+        'experience.job1Tag1': '溫室氣體盤查',
+        'experience.job2Date': '2024年7月 — 2025年3月<br>越南胡志明市',
+        'experience.job2Role': '客戶經理／台灣、中國與香港市場',
+        'experience.job2Copy': '服務台灣、中國與香港的企業客戶，從市場開發、客戶需求到方案落地，協調技術、行銷與物流團隊，累積跨國 B2B 商務經驗。',
+        'experience.job2Tag2': '客戶經營',
+        'experience.job2Tag3': '跨文化溝通',
+        'experience.job3Date': '2022年4月 — 2024年6月<br>越南胡志明市',
+        'experience.job3Company': '賜昌集團',
+        'experience.job3Role': 'ESG 與 EHS 專員／永續合規與風險管理',
+        'experience.job3Copy': '協調台灣總部與越南工廠的永續政策，執行多廠 EHS 稽核並辨識、改善 100 項以上的潛在風險，也參與太陽能與能源效率專案。',
+        'experience.job3Tag1': 'EHS 稽核',
+        'experience.job3Tag2': '風險管理',
+        'experience.job3Tag3': '越南',
+        'experience.job4Date': '2021年11月 — 2022年4月<br>台北，台灣',
+        'experience.job4Company': '中華民國國際經濟合作協會',
+        'experience.job4Role': '國際合作與商務發展專員',
+        'experience.job4Copy': '規劃台灣、泰國與蒙古的國際商務會議，進行亞太市場研究，並撰寫全球貿易與區域市場趨勢報告。',
+        'experience.job4Tag1': '市場研究',
+        'experience.job4Tag2': '會議規劃',
+        'experience.job4Tag3': '亞太市場',
+
+        'education.number': '05 ／ 基礎',
+        'education.title': '好奇心，<br>也是一種專業。',
+        'education.intro': '國際政治訓練我的研究與判讀能力；軟體開發訓練則讓我更靠近資料、系統與數位流程。',
+        'education.school1': '國立中興大學',
+        'education.school1Copy': '碩士｜國際政治<br>2019 — 2022',
+        'education.school2Copy': '全端網頁開發養成班<br>2025 — 2026',
+        'education.school3': '朱拉隆功大學',
+        'education.school3Copy': '碩士｜政治學．國際發展研究<br>2021',
+        'education.school4': '國立高雄第一科技大學',
+        'education.school4Copy': '學士｜德語<br>2014 — 2018',
+        'education.certsLabel': '證照與進修',
+        'education.cert1': '淨零碳規劃管理師<br>初級能力鑑定',
+        'education.cert2': '基礎數位行銷資格',
+        'education.cert2Note': '結業證書',
+        'education.cert3': 'Corporate ESG and Sustainability<br>101 Level Masterclass',
+        'education.cert3Note': 'Udemy 線上課程 · 2024',
+
+        'contact.number': '06 ／ 聯絡',
+        'contact.title': '讓下一步，<br>變得<span>具體可行。</span>',
+        'contact.copy': '歡迎聊聊永續策略、供應鏈合規、跨國協作，或任何需要把複雜問題變得清楚的專案。',
+        'contact.site': '個人網站',
+        'contact.bg': '一起<br>聊聊',
+        'footer.name': '劉冠彤',
+        'footer.tagline': 'ESG 與永續發展／台灣'
+      },
+      en: {
+        'meta.title': 'Kuan-Tung Liu | ESG & Sustainability',
+        'meta.description': 'Personal site of Kuan-Tung Liu — ESG, supply chain compliance and climate strategy.',
+        'a11y.home': 'Back to top',
+        'a11y.menu': 'Open menu',
+        'a11y.lang': 'Switch language, 切換為中文',
+        'lang.label': '中文',
+        'brand.name': 'KUAN-TUNG LIU',
+        'nav.about': 'About',
+        'nav.skills': 'Capabilities',
+        'nav.experience': 'Experience',
+        'nav.education': 'Education',
+        'nav.contact': "Let's connect",
+
+        'hero.eyebrow': 'ESG / SUPPLY CHAIN / CLIMATE',
+        'hero.title': 'Turning<br><span>complexity</span><br>into action.',
+        'hero.copy': "I'm Kuan-Tung Liu, a professional working on ESG, supply chain sustainability and international compliance. Years across Taiwan and Vietnam taught me to build workable links between policy, business and the factory floor.",
+        'hero.cta': 'Explore my work',
+        'hero.sideTitle': 'Policy-minded.<br>Business-aware.<br>Data-oriented.',
+        'hero.sideCopy': 'Turning global sustainability trends into next steps that companies, suppliers and cross-border teams can actually take.',
+        'hero.location': 'TAIPEI, TAIWAN / AVAILABLE FOR DIALOGUE',
+
+        'about.number': '02 / PROFILE',
+        'about.title': 'A sustainability partner who works across languages.',
+        'about.intro': 'My background spans international affairs, cross-border business, overseas operations, EHS and full-stack development. Scattered as they look, these experiences point to one thing: understanding complex problems and finding answers a team will genuinely adopt.',
+        'about.focus1Title': 'Translate regulation',
+        'about.focus1Copy': 'Tracking international rules such as PPWR, REACH and FCM, then turning them into practical requirements internal teams, suppliers and customers can act on.',
+        'about.focus2Title': 'Connect the chain',
+        'about.focus2Copy': 'Bringing procurement, QA, regulatory affairs, R&amp;D and suppliers together so ESG moves beyond the report and into everyday decisions.',
+        'about.focus3Title': 'Make data useful',
+        'about.focus3Copy': 'Using the GHG Protocol, data analysis and digital tools to build processes that can be tracked, communicated and continuously improved.',
+
+        'skills.number': '03 / CAPABILITIES',
+        'skills.title': 'What I bring<br>to the table.',
+        'skills.intro': 'From climate data to the supply chain floor, from compliance research to cross-cultural communication — I translate and collaborate between disciplines.',
+        'skills.item1': 'GHG Protocol &amp; Scope 3',
+        'skills.item2': 'Supply Chain Compliance',
+        'skills.item3': 'ESG &amp; Sustainability Strategy',
+        'skills.item4': 'Human Rights Due Diligence',
+        'skills.item5': 'Regulatory Research',
+        'skills.item6': 'Supplier Engagement',
+        'skills.item7': 'Data Analysis &amp; SQL',
+        'skills.item8': 'Cross-border Coordination',
+        'skills.langTitle': 'Languages',
+        'skills.langChinese': 'Chinese',
+        'skills.langEnglish': 'English',
+        'skills.langGerman': 'German',
+        'skills.langVietnamese': 'Vietnamese',
+        'skills.langTaiwanese': 'Taiwanese',
+        'skills.scoreEnglish': 'TOEIC 905',
+        'skills.scoreGerman': 'CEFR B1',
+        'skills.levelNative': 'Native',
+        'skills.levelProfessional': 'Professional',
+        'skills.levelLimited': 'Limited working',
+        'skills.levelElementary': 'Elementary',
+
+        'experience.number': '04 / JOURNEY',
+        'experience.title': 'Experience that<br>crosses borders.',
+        'experience.intro': 'Experience across corporate sustainability, manufacturing sites, B2B business and international cooperation lets me look at a problem through several stakeholders at once.',
+        'experience.job1Date': 'APR 2026 — PRESENT<br>TAIPEI, TAIWAN',
+        'experience.job1Company': 'TCI Group',
+        'experience.job1Role': 'ESG &amp; Sustainability Specialist / Supply Chain Compliance / Climate &amp; ESG Strategy',
+        'experience.job1Copy': 'Coordinating supplier ESG programmes and Scope 3 data collection; driving GHG inventory, CDP disclosure, an HRDD assessment framework, and compliance projects for EU rules such as PPWR, REACH and FCM.',
+        'experience.job1Tag1': 'GHG INVENTORY',
+        'experience.job2Date': 'JUL 2024 — MAR 2025<br>HO CHI MINH CITY',
+        'experience.job2Role': 'Account Manager / Taiwan, China &amp; Hong Kong Markets',
+        'experience.job2Copy': 'Serving corporate clients in Taiwan, China and Hong Kong — from market development and requirements through to delivery — coordinating technical, marketing and logistics teams across borders.',
+        'experience.job2Tag2': 'ACCOUNT MANAGEMENT',
+        'experience.job2Tag3': 'CROSS-CULTURAL',
+        'experience.job3Date': 'APR 2022 — JUN 2024<br>HO CHI MINH CITY',
+        'experience.job3Company': 'Freetrend Group',
+        'experience.job3Role': 'ESG &amp; EHS Specialist / Sustainability Compliance &amp; Risk Management',
+        'experience.job3Copy': 'Aligning sustainability policy between the Taiwan headquarters and the Vietnam plants, running multi-site EHS audits that identified and remediated 100+ potential risks, and contributing to solar and energy-efficiency projects.',
+        'experience.job3Tag1': 'EHS AUDIT',
+        'experience.job3Tag2': 'RISK MANAGEMENT',
+        'experience.job3Tag3': 'VIETNAM',
+        'experience.job4Date': 'NOV 2021 — APR 2022<br>TAIPEI, TAIWAN',
+        'experience.job4Company': 'Chinese International Economic Cooperation Association',
+        'experience.job4Role': 'International Cooperation &amp; Business Development Specialist',
+        'experience.job4Copy': 'Planning international business conferences in Taiwan, Thailand and Mongolia, running Asia-Pacific market research, and writing reports on global trade and regional market trends.',
+        'experience.job4Tag1': 'MARKET RESEARCH',
+        'experience.job4Tag2': 'EVENTS',
+        'experience.job4Tag3': 'APAC',
+
+        'education.number': '05 / FOUNDATION',
+        'education.title': 'Curiosity is<br>part of the toolkit.',
+        'education.intro': 'International politics trained my research and interpretation; software development brought me closer to data, systems and digital workflows.',
+        'education.school1': 'National Chung Hsing University',
+        'education.school1Copy': "Master's in International Politics<br>2019 — 2022",
+        'education.school2Copy': 'Full-Stack Web Development Program<br>2025 — 2026',
+        'education.school3': 'Chulalongkorn University',
+        'education.school3Copy': 'M.A. Political Science, International Development Studies<br>2021',
+        'education.school4': 'National Kaohsiung First University of Science and Technology',
+        'education.school4Copy': 'B.A. in German<br>2014 — 2018',
+        'education.certsLabel': 'CERTIFICATIONS &amp; TRAINING',
+        'education.cert1': 'Net-Zero Carbon Planning Manager<br>Foundation Level',
+        'education.cert2': 'Fundamentals of Digital Marketing',
+        'education.cert2Note': 'CERTIFICATE OF COMPLETION',
+        'education.cert3': 'Corporate ESG and Sustainability<br>101 Level Masterclass',
+        'education.cert3Note': 'UDEMY &middot; 2024',
+
+        'contact.number': '06 / CONTACT',
+        'contact.title': "Let's make<br>the next step <span>practical.</span>",
+        'contact.copy': 'Happy to talk about sustainability strategy, supply chain compliance, cross-border collaboration, or any project that needs a complex problem made clear.',
+        'contact.site': 'Personal site',
+        'contact.bg': "LET'S<br>TALK",
+        'footer.name': 'Kuan-Tung Liu',
+        'footer.tagline': 'ESG &amp; SUSTAINABILITY / TAIWAN'
+      }
+    };
+
+    const HTML_LANG = { zh: 'zh-Hant', en: 'en' };
+    const STORAGE_KEY = 'preferred-lang';
+    const metaDescription = document.querySelector('meta[name="description"]');
+    const langToggle = document.getElementById('langToggle');
+    const langLabel = document.getElementById('langLabel');
+
+    function readStoredLang() {
+      try { return localStorage.getItem(STORAGE_KEY); } catch (error) { return null; }
+    }
+    function storeLang(lang) {
+      try { localStorage.setItem(STORAGE_KEY, lang); } catch (error) { /* 無痕模式下略過 */ }
+    }
+
+    function applyLang(lang) {
+      const dict = I18N[lang];
+      document.documentElement.lang = HTML_LANG[lang];
+      document.title = dict['meta.title'];
+      if (metaDescription) metaDescription.setAttribute('content', dict['meta.description']);
+
+      document.querySelectorAll('[data-i18n]').forEach((element) => {
+        const value = dict[element.dataset.i18n];
+        if (value !== undefined) element.innerHTML = value;
+      });
+      document.querySelectorAll('[data-i18n-aria]').forEach((element) => {
+        const value = dict[element.dataset.i18nAria];
+        if (value !== undefined) element.setAttribute('aria-label', value);
+      });
+
+      // 按鈕上顯示的是「切換後」的語言，所以標記另一個語系
+      langLabel.textContent = dict['lang.label'];
+      langLabel.setAttribute('lang', lang === 'zh' ? 'en' : 'zh-Hant');
+      storeLang(lang);
+    }
+
+    let currentLang = readStoredLang();
+    if (!I18N[currentLang]) {
+      currentLang = (navigator.language || '').toLowerCase().startsWith('zh') ? 'zh' : 'en';
+    }
+    applyLang(currentLang);
+
+    langToggle.addEventListener('click', () => {
+      currentLang = currentLang === 'zh' ? 'en' : 'zh';
+      document.body.classList.add('switching');
+      window.setTimeout(() => {
+        applyLang(currentLang);
+        document.body.classList.remove('switching');
+      }, 160);
+    });
+
+    const menu = document.querySelector('.menu');
+    const nav = document.querySelector('nav');
+    menu.addEventListener('click', () => {
+      const isOpen = nav.classList.toggle('open');
+      menu.setAttribute('aria-expanded', isOpen);
+    });
+    nav.querySelectorAll('a').forEach((link) => link.addEventListener('click', () => nav.classList.remove('open')));
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    const sections = [...document.querySelectorAll('main section[id]')];
+    const navLinks = [...document.querySelectorAll('nav a:not(.nav-contact)')];
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          navLinks.forEach((link) => link.classList.toggle('active', link.getAttribute('href') === '#' + entry.target.id));
+        }
+      });
+    }, { rootMargin: '-35% 0px -55% 0px' });
+    sections.forEach((section) => observer.observe(section));
+
+    const revealObserver = new IntersectionObserver((entries, self) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          self.unobserve(entry.target);
+        }
+      });
+    }, { threshold: .12 });
+    document.querySelectorAll('.reveal').forEach((element) => revealObserver.observe(element));
+  </script>
+</body>
+</html>
