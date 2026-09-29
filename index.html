@@ -4,10 +4,33 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="劉冠彤的 ESG、供應鏈合規與氣候策略個人網站。">
+  <meta name="theme-color" content="#23414a">
+  <meta property="og:type" content="profile">
+  <meta property="og:title" content="劉冠彤｜ESG 與永續發展">
+  <meta property="og:description" content="劉冠彤的 ESG、供應鏈合規與氣候策略個人網站。">
+  <meta property="og:locale" content="zh_TW">
+  <meta property="og:locale:alternate" content="en_US">
+  <meta name="twitter:card" content="summary">
   <title>劉冠彤｜ESG 與永續發展</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cpath d='M32 2a30 30 0 0 1 30 30 30 30 0 0 1-30 30H10a8 8 0 0 1-8-8V32A30 30 0 0 1 32 2z' fill='%23a7c93c'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' text-anchor='middle' fill='%23172a2e'%3EKL%3C/text%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&family=Noto+Sans+TC:wght@400;500;700;900&display=swap">
+  <script>document.documentElement.classList.add('js');</script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Kuan-Tung Liu",
+    "alternateName": "劉冠彤",
+    "jobTitle": "ESG & Sustainability Specialist",
+    "email": "mailto:liukuantung@gmail.com",
+    "address": { "@type": "PostalAddress", "addressLocality": "Taipei", "addressCountry": "TW" },
+    "sameAs": ["https://www.linkedin.com/in/liukuantung"],
+    "knowsLanguage": ["zh-Hant", "en", "de", "vi"]
+  }
+  </script>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&family=Noto+Sans+TC:wght@400;500;700;900&display=swap');
-
     :root {
       --ink: #172a2e;
       --muted: #657174;
@@ -32,6 +55,10 @@
       -webkit-font-smoothing: antialiased;
     }
     a { color: inherit; text-decoration: none; }
+    :focus-visible { outline: 2px solid var(--coral); outline-offset: 3px; }
+    section[id] { scroll-margin-top: 78px; }
+    .skip-link { position: absolute; z-index: 20; top: -60px; left: 16px; padding: 10px 16px; color: var(--white); background: var(--navy); font-size: .8rem; font-weight: 700; transition: top .2s ease; }
+    .skip-link:focus { top: 12px; }
     button { font: inherit; }
     .shell { width: min(1180px, calc(100% - 64px)); margin: 0 auto; }
     .mono { color: var(--leaf-deep); font: 500 .72rem/1.2 'DM Mono', 'Noto Sans TC', monospace; letter-spacing: .12em; text-transform: uppercase; }
@@ -47,7 +74,9 @@
       border-bottom: 1px solid rgba(217, 221, 213, .85);
       background: rgba(244, 241, 234, .88);
       backdrop-filter: blur(15px);
+      transition: box-shadow .25s ease;
     }
+    header.scrolled { box-shadow: 0 8px 30px rgba(23, 42, 46, .07); }
     .nav { height: 78px; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
     .brand { display: flex; align-items: center; gap: 12px; font-size: .8rem; font-weight: 800; letter-spacing: .06em; }
     .brand-mark { width: 35px; height: 35px; display: grid; place-items: center; color: var(--ink); background: var(--leaf); border-radius: 50% 50% 50% 8px; font-size: 1rem; flex: none; }
@@ -137,12 +166,13 @@
     .edu-item h3 { margin: 0 0 7px; font-size: 1rem; line-height: 1.4; }
     .edu-item p { margin: 0; color: var(--muted); font-size: .8rem; }
     .certs { margin-top: 52px; }
+    .certs > .mono { margin-bottom: 16px; }
     .cert-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 14px; }
     .cert { min-height: 128px; padding: 20px; background: var(--navy); color: var(--white); display: flex; flex-direction: column; justify-content: space-between; gap: 12px; }
     .cert strong { font-size: .88rem; line-height: 1.4; }
     .cert span { color: var(--leaf); font: 500 .64rem 'DM Mono', 'Noto Sans TC', monospace; }
 
-    .contact-section { position: relative; padding-bottom: 125px; overflow: hidden; }
+    .contact-section { position: relative; padding-bottom: 260px; overflow: hidden; }
     .contact-bg { position: absolute; z-index: -1; right: -20px; bottom: -55px; color: rgba(167, 201, 60, .25); font-size: 13rem; line-height: .74; font-weight: 900; letter-spacing: -.1em; text-align: right; pointer-events: none; user-select: none; }
     .contact-content { display: grid; grid-template-columns: 1.2fr .8fr; gap: 100px; align-items: end; }
     .contact-content h2 { max-width: 690px; }
@@ -161,8 +191,13 @@
     html[lang="zh-Hant"] .mono { letter-spacing: .1em; }
     html[lang="zh-Hant"] .contact-bg { font-size: 9.5rem; line-height: .98; letter-spacing: .02em; bottom: -28px; }
 
-    .reveal { opacity: 0; transform: translateY(18px); transition: opacity .65s ease, transform .65s ease; }
-    .reveal.visible { opacity: 1; transform: none; }
+    .js .reveal { opacity: 0; transform: translateY(18px); transition: opacity .65s ease, transform .65s ease; }
+    .js .reveal.visible { opacity: 1; transform: none; }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; }
+      .js .reveal { opacity: 1; transform: none; }
+    }
     @media (max-width: 800px) {
       .shell { width: min(100% - 38px, 620px); }
       .nav { height: 68px; }
@@ -184,16 +219,39 @@
       .experience::before { left: -28px; }
       .skill-layout { gap: 36px; }
       .contact-content { gap: 35px; }
+      .contact-section { padding-bottom: 170px; }
       .contact-bg, html[lang="zh-Hant"] .contact-bg { font-size: 5.5rem; right: -8px; bottom: -5px; }
+      section[id] { scroll-margin-top: 68px; }
       .footer-inner { flex-direction: column; gap: 5px; }
+    }
+
+    /* 列印成履歷 / print as a résumé */
+    @media print {
+      @page { margin: 14mm; }
+      body { background: #fff; font-size: 10pt; }
+      header, .hero-links, .contact-bg, .skip-link, .hero::before { display: none !important; }
+      .shell { width: 100%; }
+      .hero { min-height: 0; padding: 0 0 24px; }
+      section { padding: 28px 0; break-inside: avoid-page; }
+      .js .reveal { opacity: 1; transform: none; }
+      .skills, .cert { color: var(--ink); background: #fff; border: 1px solid var(--line); }
+      .skills .intro, .language, .language em b { color: var(--muted); }
+      .skill, .skill-list, .language { border-color: var(--line); }
+      .language-box { background: #fff; border-color: var(--line); }
+      .education, .edu-item { background: #fff; }
+      .experience { break-inside: avoid; }
+      .contact-section { padding-bottom: 0; }
+      .contact-info a[href^="http"]::after { content: ' (' attr(href) ')'; font-weight: 400; color: var(--muted); }
+      footer { color: var(--muted); background: #fff; }
     }
   </style>
 </head>
 <body>
+  <a class="skip-link" href="#top" data-i18n="a11y.skip"></a>
   <header>
     <div class="shell nav">
       <a class="brand" href="#top" data-i18n-aria="a11y.home"><span class="brand-mark">KL</span><span data-i18n="brand.name"></span></a>
-      <nav>
+      <nav id="siteNav">
         <a href="#about" data-i18n="nav.about"></a>
         <a href="#skills" data-i18n="nav.skills"></a>
         <a href="#experience" data-i18n="nav.experience"></a>
@@ -204,7 +262,7 @@
         <button class="lang-toggle" id="langToggle" type="button" data-i18n-aria="a11y.lang">
           <span class="globe" aria-hidden="true">&#9673;</span><span id="langLabel"></span>
         </button>
-        <button class="menu" data-i18n-aria="a11y.menu" aria-expanded="false">&#9776;</button>
+        <button class="menu" type="button" data-i18n-aria="a11y.menu" aria-controls="siteNav" aria-expanded="false">&#9776;</button>
       </div>
     </div>
   </header>
@@ -390,6 +448,8 @@
         'meta.description': '劉冠彤的 ESG、供應鏈合規與氣候策略個人網站。',
         'a11y.home': '回到首頁',
         'a11y.menu': '開啟選單',
+        'a11y.menuClose': '關閉選單',
+        'a11y.skip': '跳到主要內容',
         'a11y.lang': '切換語言，Switch to English',
         'lang.label': 'EN',
         'brand.name': '劉冠彤',
@@ -499,6 +559,8 @@
         'meta.description': 'Personal site of Kuan-Tung Liu — ESG, supply chain compliance and climate strategy.',
         'a11y.home': 'Back to top',
         'a11y.menu': 'Open menu',
+        'a11y.menuClose': 'Close menu',
+        'a11y.skip': 'Skip to content',
         'a11y.lang': 'Switch language, 切換為中文',
         'lang.label': '中文',
         'brand.name': 'KUAN-TUNG LIU',
@@ -623,6 +685,8 @@
       document.documentElement.lang = HTML_LANG[lang];
       document.title = dict['meta.title'];
       if (metaDescription) metaDescription.setAttribute('content', dict['meta.description']);
+      document.querySelector('meta[property="og:title"]').setAttribute('content', dict['meta.title']);
+      document.querySelector('meta[property="og:description"]').setAttribute('content', dict['meta.description']);
 
       document.querySelectorAll('[data-i18n]').forEach((element) => {
         const value = dict[element.dataset.i18n];
@@ -647,6 +711,7 @@
 
     langToggle.addEventListener('click', () => {
       currentLang = currentLang === 'zh' ? 'en' : 'zh';
+      setMenu(false);
       document.body.classList.add('switching');
       window.setTimeout(() => {
         applyLang(currentLang);
@@ -656,11 +721,25 @@
 
     const menu = document.querySelector('.menu');
     const nav = document.querySelector('nav');
-    menu.addEventListener('click', () => {
-      const isOpen = nav.classList.toggle('open');
-      menu.setAttribute('aria-expanded', isOpen);
+    function setMenu(open) {
+      nav.classList.toggle('open', open);
+      menu.setAttribute('aria-expanded', open);
+      menu.innerHTML = open ? '&#10005;' : '&#9776;';
+      menu.setAttribute('aria-label', I18N[currentLang][open ? 'a11y.menuClose' : 'a11y.menu']);
+    }
+    menu.addEventListener('click', () => setMenu(!nav.classList.contains('open')));
+    nav.querySelectorAll('a').forEach((link) => link.addEventListener('click', () => setMenu(false)));
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && nav.classList.contains('open')) { setMenu(false); menu.focus(); }
     });
-    nav.querySelectorAll('a').forEach((link) => link.addEventListener('click', () => nav.classList.remove('open')));
+    document.addEventListener('click', (event) => {
+      if (nav.classList.contains('open') && !event.target.closest('header')) setMenu(false);
+    });
+
+    const header = document.querySelector('header');
+    const onScroll = () => header.classList.toggle('scrolled', window.scrollY > 8);
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
     document.getElementById('year').textContent = new Date().getFullYear();
 
     const sections = [...document.querySelectorAll('main section[id]')];
